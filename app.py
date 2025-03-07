@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from .auth import admin_data_handler
+from .data import admin_data_handler
 
 app = Flask(__name__)
 
