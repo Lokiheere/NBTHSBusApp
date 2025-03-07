@@ -8,7 +8,7 @@ admins = [
 
 admins = sorted(admins)
 
-connection = sqlite3.connect("data/admin_data_handler.sqlite")
+connection = sqlite3.connect("auth/admin_data_handler.sqlite")
 cursor = connection.cursor()
 
 cursor.execute("CREATE TABLE IF NOT EXISTS admins (name TEXT)")
@@ -22,7 +22,7 @@ for row in cursor.execute("SELECT * FROM admins"):
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
-        db = g._database = sqlite3.connect("data/admin_data_handler.sqlite")
+        db = g._database = sqlite3.connect("auth/admin_data_handler.sqlite")
         cursor = db.cursor()
         cursor.execute("SELECT * FROM admins")
     return cursor.fetchall()
