@@ -1,30 +1,45 @@
-import sqlite3
-from flask import g
+from flask import render_template, request, session, redirect, url_for
+import mysql.connector
+from dotenv import load_dotenv
+import os
 
-admins = [
-    "Karim",
-    "Mehdi",
-]
+load_dotenv(".env")
 
-admins = sorted(admins)
+def connection(host, user, password, database, port): 
+    return mysql.connector.connect(
+        host= host,
+        user= user,
+        password= password,
+        database= database,
+        port= port, 
+    )
 
-connection = sqlite3.connect("auth/admin_data_handler.sqlite")
+host= os.getenv('HOST')
+user= os.getenv('USER')
+password= os.getenv('PASSWORD')
+database= os.getenv('DATABASE')
+port= os.getenv('PORT')
+
+connection = connection(host, user, password, database, port)
+
 cursor = connection.cursor()
 
-cursor.execute("CREATE TABLE IF NOT EXISTS admins (name TEXT)")
-cursor.executemany("INSERT INTO admins VALUES (?)", [(admin,) for admin in admins])
+def login_user():
+    msg = ''
+    if request.method == 'POST':
+        name = request.form['name']
+        passcode = request.form['passcode']
+        cursor.execute("SELECT * FROM passcode WHERE name = %s AND passcode = %s", (name, passcode))
+        record = cursor.fetchone()
+        if record:
+            session['loggedin'] = True
+            session['name'] = record[1]
+            return redirect(url_for('home'))
+        else:
+            msg = 'Invalid username or password'
+    return render_template('auth/index.html', msg=msg)
 
-commit = connection.commit()
-
-for row in cursor.execute("SELECT * FROM admins"):
-    print(row)
-
-def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = sqlite3.connect("auth/admin_data_handler.sqlite")
-        cursor = db.cursor()
-        cursor.execute("SELECT * FROM admins")
-    return cursor.fetchall()
-
-connection.close()
+def logout_user():
+    session.pop('loggedin', None)
+    session.pop('name', None)
+    return redirect(url_for('auth'))

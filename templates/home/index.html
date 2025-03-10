@@ -1,0 +1,7 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="bg-black">Hello</div>
+    <h2>Welcome, {{username}}</h2>
+    <a href="{{url_for('logout')}}">Logout</a>
+{% endblock %}
