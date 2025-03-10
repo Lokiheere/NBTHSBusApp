@@ -34,7 +34,8 @@ def login_user():
         if record:
             session['loggedin'] = True
             session['name'] = record[1]
-            return redirect(url_for('home'))
+            if 'HX-Request' in request.headers:
+                 return '', 204, {'HX-Redirect': url_for('home')}
         else:
             msg = 'Invalid username or password'
     return render_template('auth/index.html', msg=msg)
