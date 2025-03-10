@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<form hx-post="{{url_for('auth')}}">
+<form hx-post="{{url_for('authen.auth')}}">
     <label>Name:</label>
     <input type="text" name="name" id="name" required>
     <label>Passcode:</label>

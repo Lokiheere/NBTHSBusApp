@@ -35,7 +35,7 @@ def login_user():
             session['loggedin'] = True
             session['name'] = record[1]
             if 'HX-Request' in request.headers:
-                 return '', 204, {'HX-Redirect': url_for('home')}
+                 return '', 204, {'HX-Redirect': url_for('home_bp.home')}
         else:
             msg = 'Invalid username or password'
     return render_template('auth/index.html', msg=msg)
@@ -43,4 +43,4 @@ def login_user():
 def logout_user():
     session.pop('loggedin', None)
     session.pop('name', None)
-    return redirect(url_for('auth'))
+    return redirect(url_for('authen.auth'))

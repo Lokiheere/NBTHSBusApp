@@ -25,8 +25,10 @@ Routes:
    - Raises: KeyError if the 'name' key is not found in the session, indicating the user is not logged in.
 """
 
-from flask import Flask, render_template, session
-from .auth import admin_data_handler
+from flask import Flask, render_template
+from home import routes as home_routes
+from auth import routes as auth_routes
+from errors import error_handlers
 import os
 from dotenv import load_dotenv 
 
@@ -37,17 +39,14 @@ load_dotenv('.env')
 app.secret_key = os.getenv('SECRET_KEY')
 
 @app.route('/')
-def hello_world():
+def layout():
     return render_template('layout.html')
 
-@app.route('/auth', methods=['GET', 'POST'])
-def auth():
-    return admin_data_handler.login_user()
+app.register_blueprint(error_handlers.errors)
 
-@app.route('/logout')
-def logout():
-    return admin_data_handler.logout_user()
+app.register_blueprint(auth_routes.authen)
 
-@app.route('/home')
-def home():
-    return render_template('home/index.html', username = session['name'])   
+app.register_blueprint(home_routes.home_bp)
+
+if __name__ == '__main__':
+    app.run(debug=True)
