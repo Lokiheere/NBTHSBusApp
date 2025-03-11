@@ -42,7 +42,7 @@ app.secret_key = os.getenv('SECRET_KEY')
 def layout():
     return render_template('layout.html')
 
-app.register_blueprint(error_handlers.errors)
+app.register_blueprint(error_handlers.error)
 
 app.register_blueprint(auth_routes.authen)
 

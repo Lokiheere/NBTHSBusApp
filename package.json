@@ -1,11 +1,10 @@
 {
   "name": "nbthsbusapp",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-css": "tailwindcss -i ./static/src/input.css -o ./static/css/main.css --watch"
+    "build": "npx tailwindcss -i ./static/src/tailwind.css -o ./static/css/styles.css --watch"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +12,5 @@
   "devDependencies": {
     "tailwindcss": "^3.4.17"
   },
-  "dependencies": {
-    "@tailwindcss/cli": "^4.0.12"
-  }
+  "description": ""
 }
