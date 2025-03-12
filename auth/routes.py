@@ -1,10 +1,13 @@
-from flask import Blueprint
+from flask import Blueprint, redirect, session, url_for
 from . import admin_data_handler
 
 authen = Blueprint('authen', __name__)
 
 @authen.route('/auth', methods=['GET', 'POST'])
 def auth():
+    if 'loggedin' in session:
+        username = session.get('name')
+        return redirect(url_for('management_bp.management', username=username))
     return admin_data_handler.login_user()
 
 @authen.route('/logout')

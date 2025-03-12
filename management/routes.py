@@ -1,12 +1,24 @@
+from functools import wraps
 from flask import Blueprint, redirect, render_template, session, url_for
 
 management_bp = Blueprint('management_bp', __name__)
 
-@management_bp.route('/management/<username>')
-def management(username):
-    return render_template('management/index.html', username=username)   
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'loggedin' not in session or session.get('name') != kwargs.get('username'):
+            return redirect(url_for('authen.auth'))
+        return f(*args, **kwargs)
+    return decorated_function
 
-@management_bp.before_request
-def restrict_access():
+@management_bp.route('/management/<username>')
+@login_required
+def management(username):
     if 'loggedin' not in session:
         return redirect(url_for('authen.auth'))
+    return render_template('management/index.html', username=username)   
+    
+@management_bp.before_request
+def check_admin():
+    if 'admin' in session:
+        return redirect(url_for('management_bp.management', username=session['name']))

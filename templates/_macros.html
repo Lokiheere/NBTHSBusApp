@@ -7,6 +7,6 @@
 {%- endmacro %}
 
 {% macro navbar() -%}
-    <a href="{{ url_for('authen.auth')}}">Auth</a>
-    <a href="{{ url_for('home_bp.home')}}">Home</a>
+    <a class="text-blue-500" href="{{ url_for('authen.auth') }}">Auth</a>   
+    <a  class="text-blue-500" href="{{ url_for('home_bp.home')}}">Home</a>
 {%- endmacro %}
