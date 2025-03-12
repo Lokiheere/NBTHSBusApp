@@ -28,6 +28,7 @@ Routes:
 from flask import Flask, render_template
 from home import routes as home_routes
 from auth import routes as auth_routes
+from management import routes as management_routes
 from errors import error_handlers
 import os
 from dotenv import load_dotenv 
@@ -39,10 +40,12 @@ load_dotenv('.env')
 app.secret_key = os.getenv('SECRET_KEY')
 
 @app.route('/')
-def layout():
-    return render_template('layout.html')
+def main():
+    return render_template('main/index.html')
 
 app.register_blueprint(error_handlers.error)
+
+app.register_blueprint(management_routes.management_bp)
 
 app.register_blueprint(auth_routes.authen)
 
