@@ -1,7 +1,6 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    {{ macros.navbar() }}
     <h2>Welcome, {{username}}</h2>
-    <a class="text-blue-500" href="{{url_for('authen.logout')}}">Logout</a>
+    <a class="text-blue-500 underline" href="{{url_for('authen.logout')}}">Logout</a>
 {% endblock %}

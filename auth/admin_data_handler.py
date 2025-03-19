@@ -1,26 +1,17 @@
 from flask import render_template, request, session, redirect, url_for
-import mysql.connector
 from dotenv import load_dotenv
 import os
+from utils.db_connect import get_connection
 
 load_dotenv(".env")
 
-def connection(host, user, password, database, port): 
-    return mysql.connector.connect(
-        host= host,
-        user= user,
-        password= password,
-        database= database,
-        port= port, 
-    )
+host= os.getenv('APP_HOST')
+user= os.getenv('APP_USER')
+password= os.getenv('APP_PASSWORD')
+database= os.getenv('APP_DATABASE')
+port= os.getenv('APP_PORT')
 
-host= os.getenv('HOST')
-user= os.getenv('USER')
-password= os.getenv('PASSWORD')
-database= os.getenv('DATABASE')
-port= os.getenv('PORT')
-
-connection = connection(host, user, password, database, port)
+connection = get_connection(host, user, password, database, port)
 
 cursor = connection.cursor()
 

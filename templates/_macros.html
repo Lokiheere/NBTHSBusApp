@@ -7,6 +7,17 @@
 {%- endmacro %}
 
 {% macro navbar() -%}
-    <a class="text-blue-500" href="{{ url_for('authen.auth') }}">Auth</a>   
-    <a  class="text-blue-500" href="{{ url_for('home_bp.home')}}">Home</a>
+    <nav class="bg-blue-500 text-white fixed p-8 w-full shadow-2xl z-50">
+        <div class="mx-auto flex">
+            <!-- <div class="space-x-4"> -->
+            <ul class="space-x-4 flex items-center">
+                <li>
+                    <a href="{{ url_for('authen.auth') }}" class="mx-8 p-8 bg-blue-500 text-white hover:bg-blue-400 hover:scale-95">Auth</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('home_bp.home') }}" class="mx-8 p-8 bg-blue-500 text-white hover:bg-blue-400 hover:scale-95">Home</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 {%- endmacro %}

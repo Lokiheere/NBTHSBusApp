@@ -11,5 +11,6 @@ flask = "*"
 mysql-connector-python = "*"
 bcrypt = "*"
 python-dotenv = "*"
+gunicorn = "*"
 
 [dev-packages]
