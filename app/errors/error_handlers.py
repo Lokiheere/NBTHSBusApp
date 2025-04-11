@@ -1,6 +1,5 @@
-from flask import Blueprint, render_template
-
-error = Blueprint('error', __name__)
+from flask import render_template
+from . import error
 
 @error.app_errorhandler(403)
 def forbidden(error):

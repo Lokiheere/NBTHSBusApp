@@ -12,5 +12,8 @@ mysql-connector-python = "*"
 bcrypt = "*"
 python-dotenv = "*"
 gunicorn = "*"
+flask-login = "*"
+flask-admin = "*"
+folium = "*"
 
 [dev-packages]

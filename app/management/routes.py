@@ -1,7 +1,7 @@
 from functools import wraps
-from flask import Blueprint, redirect, render_template, session, url_for
+from flask import redirect, render_template, session, url_for
+from . import management_bp
 
-management_bp = Blueprint('management_bp', __name__)
 
 def login_required(f):
     @wraps(f)
@@ -22,3 +22,4 @@ def management(username):
 def check_admin():
     if 'admin' in session:
         return redirect(url_for('management_bp.management', username=session['name']))
+

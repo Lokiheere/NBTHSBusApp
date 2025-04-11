@@ -7,7 +7,7 @@ services:
     depends_on:
       - mysql
     ports:
-      - "5000:5000"
+      - "3340:3340"
 
   mysql:
     image: mysql:5.7
@@ -16,4 +16,4 @@ services:
       MYSQL_DATABASE: ${DOCKER_MYSQL_DATABASE}
       MYSQL_ROOT_PASSWORD: ${DOCKER_MYSQL_ROOT_PASSWORD}
     ports:
-      - "3360:3306"
+      - "5000:5000"

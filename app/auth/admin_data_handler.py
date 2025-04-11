@@ -1,7 +1,7 @@
 from flask import render_template, request, session, redirect, url_for
 from dotenv import load_dotenv
 import os
-from utils.db_connect import get_connection
+from app.utils.db_connect import get_connection
 
 load_dotenv(".env")
 
@@ -20,14 +20,14 @@ def login_user():
     if request.method == 'POST':
         name = request.form['name']
         passcode = request.form['passcode']
-        cursor.execute("SELECT * FROM passcode WHERE name = %s AND passcode = %s", (name, passcode))
+        cursor.execute("SELECT * FROM users WHERE name = %s AND passcode = %s", (name, passcode))
         record = cursor.fetchone()
         if record:
             session['loggedin'] = True
             session['name'] = record[1]
             username = record[1]
             if 'HX-Request' in request.headers:
-                 return '', 204, {'HX-Redirect': url_for('management_bp.management', username = username)}
+                return '', 204, {'HX-Redirect': url_for('management_bp.management', username = username)}
         else:
             msg = 'Invalid username or password'
     return render_template('auth/index.html', msg=msg)

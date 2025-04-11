@@ -1,7 +1,7 @@
-from flask import Blueprint, redirect, session, url_for
+from flask import redirect, session, url_for
+from . import authen
 from . import admin_data_handler
 
-authen = Blueprint('authen', __name__)
 
 @authen.route('/auth', methods=['GET', 'POST'])
 def auth():
