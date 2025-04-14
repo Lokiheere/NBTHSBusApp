@@ -6,6 +6,7 @@ from app.errors import error_handlers
 import os
 from dotenv import load_dotenv 
 from flask_admin import Admin
+from tests.dashboard import UserView
 
 app = Flask(__name__, template_folder="app/templates", static_folder="app/static")
 
@@ -25,7 +26,9 @@ app.register_blueprint(auth_routes.authen)
 
 app.register_blueprint(home_routes.home_bp)
 
-admin = Admin(app, name='Admin Dashboard', template_mode='bootstrap3')
+admin = Admin(app, name='Admin Dashboard', template_mode='bootstrap3', base_template='admin/base.html')
+
+admin.add_view(UserView(name='Users', endpoint='user_view'))
 
 # import folium
 
@@ -40,7 +43,7 @@ admin = Admin(app, name='Admin Dashboard', template_mode='bootstrap3')
 #     no_touch=True,
 #     )
 
-# m.save('app/templates/main/index.html')
+# m.save('app/templates/maps/map1.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

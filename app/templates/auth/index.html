@@ -1,6 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+{{ macros.navbar() }}
 <form hx-post="{{url_for('authen.auth')}}">
     <label>Name:</label>
     <input type="text" name="name" id="name" required>
