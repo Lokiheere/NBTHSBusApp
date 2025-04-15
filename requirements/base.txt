@@ -1,4 +1,4 @@
--r common.txt
+-r prod.txt
 
 mysql-connector-python==9.2.0
 gunicorn==23.0.0
