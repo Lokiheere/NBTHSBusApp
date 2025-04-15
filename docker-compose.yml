@@ -13,5 +13,5 @@ services:
 
   mysql:
     image: "mysql/mysql-server:5.7"
-    env_file: mysql.env
+    env_file: .env_mysql
     restart: always
