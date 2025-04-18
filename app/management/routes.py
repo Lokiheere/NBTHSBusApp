@@ -2,7 +2,6 @@ from functools import wraps
 from flask import redirect, render_template, session, url_for
 from . import management_bp
 
-
 def login_required(f):
     @wraps(f)
     def access_control(*args, **kwargs):

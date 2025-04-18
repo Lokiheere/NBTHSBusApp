@@ -1,21 +1,26 @@
 FROM python:3.11-slim
 
-ENV FLASK_APP=app.py
+# Install system-level dependencies required for uWSGI
+RUN apt-get update && apt-get install -y \
+    gcc \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    python3-dev \
+    && apt-get clean
 
-WORKDIR /home/nbthsbusapp
+# Set environment variables
+ENV FLASK_APP="app:create_app"
+ENV FLASK_ENV="production"
 
-COPY requirements requirements
+WORKDIR /app
+ADD . /app/
 
-RUN python -m venv venv
-
-RUN venv/bin/pip install --upgrade pip
-
-RUN venv/bin/pip install -r requirements/docker.txt
-
-COPY app app
-
-COPY app.py boot.sh ./
-
-EXPOSE 5000
+# Install Python dependencies, including uWSGI
+RUN pip install --upgrade pip
+RUN pip install uwsgi
+RUN pip install --no-cache-dir -r requirements.txt
+RUN apt-get update && apt-get install -y libpcre3 libpcre3-dev
+RUN pip install uwsgi
 
 ENTRYPOINT ["./boot.sh"]

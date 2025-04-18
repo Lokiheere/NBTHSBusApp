@@ -2,7 +2,6 @@ from flask import redirect, session, url_for
 from . import authen
 from . import admin_data_handler
 
-
 @authen.route('/auth', methods=['GET', 'POST'])
 def auth():
     if 'loggedin' in session:

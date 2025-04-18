@@ -3,8 +3,6 @@ from dotenv import load_dotenv
 import os
 from utils.db_connect import get_connection
 
-load_dotenv(".env")
-
 host= os.getenv('APP_HOST')
 user= os.getenv('APP_USER')
 password= os.getenv('APP_PASSWORD')
