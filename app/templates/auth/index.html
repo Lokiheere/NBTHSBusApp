@@ -1,12 +1,13 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-{{ macros.navbar() }}
-<form hx-post="{{url_for('authen.auth')}}">
-    <label>Name:</label>
-    <input type="text" name="name" id="name" required>
-    <label>Passcode:</label>
-    <input type="password" name="passcode" id="passcode" pattern="\d{8}" required>
-    <input type="submit" value="Login">
-</form>  
+    {{ macros.navbar() }}
+    <form method="POST" action="{{url_for('authen.auth')}}">
+        <label>Name:</label>
+        <input type="text" name="name" id="name" required>
+        <label>Passcode:</label>
+        <input type="password" name="passcode" id="passcode" pattern="\d{8}" required>
+        <input type="submit" value="Login">
+    </form>  
+    <p>{{ msg }}</p>
 {% endblock %}

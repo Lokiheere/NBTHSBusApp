@@ -1,10 +1,10 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-    <div class="flex flex-col items-center space-y-8">
-        <a href="{{ url_for('authen.auth')}}" class="text-blue-500 hover:underline text-lg font-medium">Manage</a>
-        <a href="{{ url_for('home_bp.home') }}" class="text-blue-500 hover:underline text-lg font-medium">Home</a>      
-    </div>
-</body>
+    <body>
+        <div>
+            <a href="{{ url_for('authen.auth')}}">Manage</a>
+            <a href="{{ url_for('home_bp.home') }}">Home</a>      
+        </div>
+    </body>
 {% endblock %}

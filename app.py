@@ -1,14 +1,21 @@
 import os
-
 from dotenv import load_dotenv
 dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
 if os.path.exists(dotenv_path):
     load_dotenv(dotenv_path)
 
+from apscheduler.schedulers.background import BackgroundScheduler
+scheduler = BackgroundScheduler()
 
 from app import create_app
-
 app = create_app()
 
+from app.management.manage import reset_options
+
 if __name__ == '__main__':
+    scheduler.add_job(reset_options, 'interval', seconds=20)
+
+    scheduler.start()
     app.run(host="0.0.0.0", port=5000, debug=True)
+
+    

@@ -13,6 +13,8 @@ bcrypt = "*"
 python-dotenv = "*"
 gunicorn = "*"
 flask-admin = "*"
+Flask-WTF = "*"
 folium = "*"
+apscheduler = "*"
 
 [dev-packages]

@@ -1,8 +1,12 @@
 from flask import redirect, session, url_for
+
 from . import authen
 from . import admin_data_handler
 
+from app import limiter
+
 @authen.route('/auth', methods=['GET', 'POST'])
+@limiter.limit("10/minute")
 def auth():
     if 'loggedin' in session:
         username = session.get('name')

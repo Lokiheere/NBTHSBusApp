@@ -1,9 +1,20 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-{{ macros.navbar() }}
 <h2>Welcome, {{username}}</h2>
 <a class="text-blue-500 underline" href="{{url_for('authen.logout')}}">Logout</a>
-<div>
-</div>
+    {% if session['loggedin'] %}
+        <p>{{ msg }}</p>
+
+        <form method="POST" action="{{ url_for('management_bp.management', username=username) }}">
+            <label for="selector">Choose a task:</label>
+            <select name="selector" id="selector" required>
+                {% for option in options %}
+                <option>{{ option }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %}
 {% endblock %}
+

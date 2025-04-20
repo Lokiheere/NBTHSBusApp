@@ -20,13 +20,14 @@ def login_user():
         passcode = request.form['passcode']
         cursor.execute("SELECT * FROM users WHERE name = %s AND passcode = %s", (name, passcode))
         record = cursor.fetchone()
-        if record:
+        if record and name == record[1]:
             session['loggedin'] = True
-            session['name'] = record[1]
+            session['name'] = record[1]        
             username = record[1]
-            if 'HX-Request' in request.headers:
-                return '', 204, {'HX-Redirect': url_for('management_bp.management', username = username)}
+            return redirect(url_for('management_bp.management', username = username))
         else:
+            session.pop('loggedin', None)
+            session.pop('name', None)
             msg = 'Invalid username or password'
     return render_template('auth/index.html', msg=msg)
 

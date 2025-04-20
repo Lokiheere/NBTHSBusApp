@@ -19,17 +19,3 @@ class UserView(BaseView):
             users = cursor.fetchall()
         return self.render('admin/users.html', users=users)
     
-# import folium
-
-# m = folium.Map(
-#     location=[40.453329, -74.467905], 
-#     tiles="cartodb positron", 
-#     zoom_start=19,
-#     zoom_control=False,
-#     dragging=False,
-#     scrollWheelZoom=False,
-#     doubleClickZoom=False,
-#     no_touch=True,
-#     )
-
-# m.save('app/templates/maps/map1.html')
