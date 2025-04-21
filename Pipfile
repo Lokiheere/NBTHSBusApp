@@ -16,5 +16,6 @@ flask-admin = "*"
 Flask-WTF = "*"
 folium = "*"
 apscheduler = "*"
+flask-socketio = "*"
 
 [dev-packages]

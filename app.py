@@ -10,12 +10,18 @@ scheduler = BackgroundScheduler()
 from app import create_app
 app = create_app()
 
+from flask_socketio import SocketIO
+socketio = SocketIO(app)
+@socketio.on('connect')
+def handle_connect():
+    print("Client connected!")
+
 from app.management.manage import reset_options
 
 if __name__ == '__main__':
-    scheduler.add_job(reset_options, 'interval', seconds=20)
+    scheduler.add_job(reset_options, 'cron', hour=24)
 
     scheduler.start()
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    socketio.run(app, host="0.0.0.0", port=5000, debug=True)
 
     

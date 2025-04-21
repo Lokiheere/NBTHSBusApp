@@ -7,10 +7,17 @@
         <p>{{ msg }}</p>
 
         <form method="POST" action="{{ url_for('management_bp.management', username=username) }}">
-            <label for="selector">Choose a task:</label>
-            <select name="selector" id="selector" required>
+            <label for="bus_selector">Choose a Bus:</label>
+            <select name="bus_selector" id="bus_selector" required>
                 {% for option in options %}
-                <option>{{ option }}</option>
+                <option value="{{ option }}">{{ option }}</option>
+                {% endfor %}
+            </select>
+        
+            <label for="spot_selector">Choose a Parking Spot:</label>
+            <select name="spot_selector" id="spot_selector" required>
+                {% for spot in spots %}
+                <option value="{{ spot }}">{{ spot }}</option>
                 {% endfor %}
             </select>
             <button type="submit">Submit</button>

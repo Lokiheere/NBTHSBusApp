@@ -1,10 +1,30 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <!-- <img src="{{ url_for('static', filename='img/file.svg') }}" alt="SVG Image" class="w-32 h-32"> -->
     {{ macros.navbar() }}
     <div>
         <input type="text" id="input">
     </div>
     {% include "maps/map1.html" %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.0/socket.io.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const socket = io(); // Connect to Socket.IO
+            const form = document.getElementById("selectionForm");
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const response = await fetch("{{ url_for('management_bp.management', username=username) }}", {
+                    method: "POST",
+                    body: formData
+                });
+                const data = await response.json();
+                document.getElementById("messages").innerHTML += `<p>${data.message}</p>`;
+            });
+            socket.on("new_assignment", (data) => {
+                document.getElementById("assignments").innerHTML += `<p>Real-time update: ${data.message}</p>`;
+            });
+        });
+    </script>
 {% endblock %}

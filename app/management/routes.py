@@ -1,7 +1,17 @@
+import os
+
 from functools import wraps
-from flask import redirect, render_template, session, url_for, request
+from flask import jsonify, redirect, render_template, session, url_for, request
+from flask_socketio import SocketIO
+from app import socketio
 from . import manage 
 from . import management_bp
+
+host= os.getenv('APP_HOST')
+user= os.getenv('APP_USER')
+password= os.getenv('APP_PASSWORD')
+database= os.getenv('APP_DATABASE')
+port= os.getenv('APP_PORT')
 
 def login_required(f):
     @wraps(f)
@@ -13,24 +23,37 @@ def login_required(f):
         return f(*args, **kwargs)
     return access_control
 
-from app.management.manage import available_options
-
 @management_bp.route('/management/<username>', methods=['GET', 'POST'])
 @login_required
 def management(username):
     if 'loggedin' not in session:
         return redirect(url_for('authen.auth'))
     
-    global available_options
+    available_options, parking_spots = manage.get_available_data()
+
     msg = ''
-
-    print(f"Current options passed to template: {available_options}")
-
     if request.method == 'POST':
-        selected_option = request.form.get('selector')
-        available_options, msg = manage.process_selection(selected_option, available_options)
-        print(f"Current options passed to template: {available_options}")
+        selected_bus = request.form.get('bus_selector')
+        selected_spot = request.form.get('spot_selector')
         
-    print(f"Current options passed to template: {available_options}")
+        if not selected_bus or not selected_spot:
+            msg = "Please select both a bus and a parking spot."
+        else:
+            msg = manage.process_selection(selected_bus, selected_spot)
+            socketio.emit('new_assignment', {
+                "bus": selected_bus,
+                "spot": selected_spot,
+                "message": msg
+            })
+            return jsonify({
+                "message": msg,
+                "options": available_options,
+                "spots": parking_spots
+            })
 
-    return render_template('management/index.html', username=username, options=available_options, msg=msg)
+        msg = manage.process_selection(selected_bus, selected_spot)
+
+    print(f"Current options passed to template: {available_options}, Parking spots: {parking_spots}")
+    
+    return render_template('management/index.html', username=username, options=available_options, spots=parking_spots, msg=msg)
+
