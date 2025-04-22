@@ -16,6 +16,8 @@ ENV FLASK_ENV="production"
 WORKDIR /app
 ADD . /app/
 
+COPY config/app.ini /config/app.ini
+
 # Install Python dependencies, including uWSGI
 RUN pip install --upgrade pip
 RUN pip install uwsgi
