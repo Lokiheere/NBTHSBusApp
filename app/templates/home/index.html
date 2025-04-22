@@ -10,21 +10,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.0/socket.io.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const socket = io(); // Connect to Socket.IO
-            const form = document.getElementById("selectionForm");
-            form.addEventListener("submit", async (e) => {
-                e.preventDefault();
-                const formData = new FormData(form);
-                const response = await fetch("{{ url_for('management_bp.management', username=username) }}", {
-                    method: "POST",
-                    body: formData
-                });
-                const data = await response.json();
-                document.getElementById("messages").innerHTML += `<p>${data.message}</p>`;
-            });
+            const socket = io(); 
+            const form = document.getElementById("selectionForm"); 
+
             socket.on("new_assignment", (data) => {
-                document.getElementById("assignments").innerHTML += `<p>Real-time update: ${data.message}</p>`;
+                document.getElementById("assignments").innerHTML += `<p>Bus: ${data.bus} → Spot: ${data.spot}</p>`;
             });
+
+            if (form) {
+                form.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    const formData = new FormData(form);
+
+                    const response = await fetch("{{ url_for('management_bp.management', username=username) }}", {
+                        method: "POST",
+                        body: formData,
+                        headers: {
+                            "X-Requested-With": "XMLHttpRequest" 
+                        }
+                    });
+
+                    const data = await response.json();
+                    document.getElementById("messages").innerHTML += `<p>${data.message}</p>`;
+                });
+            } else {
+                console.error("Form not found!");
+            }
         });
     </script>
 {% endblock %}

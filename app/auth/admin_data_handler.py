@@ -1,5 +1,4 @@
 from flask import render_template, request, session, redirect, url_for
-from dotenv import load_dotenv
 import os
 from app.utils.db_connect import get_connection
 
@@ -10,7 +9,6 @@ database= os.getenv('APP_DATABASE')
 port= os.getenv('APP_PORT')
 
 connection = get_connection(host, user, password, database, port)
-
 cursor = connection.cursor()
 
 def login_user():

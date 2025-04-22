@@ -2,7 +2,6 @@ import os
 
 from functools import wraps
 from flask import jsonify, redirect, render_template, session, url_for, request
-from flask_socketio import SocketIO
 from app import socketio
 from . import manage 
 from . import management_bp
@@ -45,11 +44,11 @@ def management(username):
                 "spot": selected_spot,
                 "message": msg
             })
-            return jsonify({
-                "message": msg,
-                "options": available_options,
-                "spots": parking_spots
-            })
+            
+            if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                return jsonify({"message": msg})
+            
+            return redirect(url_for('management_bp.management', username=username))
 
         msg = manage.process_selection(selected_bus, selected_spot)
 

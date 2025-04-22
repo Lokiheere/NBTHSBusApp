@@ -1,8 +1,7 @@
 import os
 
-from app.utils.db_connect import get_connection
-from flask import session, jsonify, request
 from datetime import datetime
+from app.utils.db_connect import get_connection
 
 host= os.getenv('APP_HOST')
 user= os.getenv('APP_USER')

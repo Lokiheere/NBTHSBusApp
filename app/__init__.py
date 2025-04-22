@@ -4,6 +4,9 @@ import os
 from flask_limiter import Limiter
 limiter = Limiter(key_func=lambda: request.remote_addr)
 
+from flask_socketio import SocketIO
+socketio = SocketIO()
+
 def create_app() -> Flask:
     app = Flask(__name__)
 
@@ -12,7 +15,8 @@ def create_app() -> Flask:
     app.secret_key = os.getenv('SECRET_KEY')
     
     limiter.init_app(app)
-
+    socketio.init_app(app)
+    
     @app.route('/')
     def main():
         return render_template('main/index.html')
