@@ -8,6 +8,7 @@
         <p>{{ msg }}</p>
 
         <form method="POST" action="{{ url_for('management_bp.management', username=username) }}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <label for="bus_selector">Choose a Bus:</label>
             <select name="bus_selector" id="bus_selector" required>
                 {% for option in options %}
@@ -23,6 +24,22 @@
             </select>
             <button type="submit">Submit</button>
         </form>
+
+        {% for bus in assigned_data %}
+            <div>
+                <p>
+                    Bus: {{ bus.bus_name }}
+                    Spot: {{ bus.spot_name }}
+
+                    <form method="POST" action="{{ url_for('management_bp.undo_selection', username=username) }}">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="bus_name" value="{{ bus.bus_name }}">
+                        <input type="hidden" name="spot_name" value="{{ bus.spot_name }}">
+                        <button type="submit">Undo Assignment</button>
+                    </form>
+                </p>
+            </div>
+        {% endfor %}
     {% endif %}
 {% endblock %}
 

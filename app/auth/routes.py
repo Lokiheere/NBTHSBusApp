@@ -6,7 +6,7 @@ from . import admin_data_handler
 from app import limiter
 
 @authen.route('/auth', methods=['GET', 'POST'])
-@limiter.limit("10/minute")
+@limiter.limit("30/minute")
 def auth():
     if 'loggedin' in session:
         username = session.get('name')

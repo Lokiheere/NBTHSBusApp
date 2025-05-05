@@ -1,3 +1,3 @@
 from flask import Blueprint
 
-error = Blueprint('error', __name__)
+errors = Blueprint('errors', __name__)
