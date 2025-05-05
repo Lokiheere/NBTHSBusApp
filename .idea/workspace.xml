@@ -4,37 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d840dce-7380-434a-931d-b20ffc87c0e3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docker/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/docker/.dockerignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/admin_data_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/admin_data_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/errors/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/errors/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/errors/error_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/errors/error_handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/management/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/management/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/management/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/management/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/_macros.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_macros.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/auth/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/auth/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/management/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/management/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/maps/map1.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/maps/map1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/utils/create_map.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/create_map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/utils/db_connect.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/db_connect.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/utils/db_initializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/db_initializer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boot.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nginx/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/nginx/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements/common.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/common.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/1_db_connection.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dashboard.py" beforeDir="false" />
-    </list>
+    <list default="true" id="1d840dce-7380-434a-931d-b20ffc87c0e3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
