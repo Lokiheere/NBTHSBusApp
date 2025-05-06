@@ -17,9 +17,9 @@ def login_user():
     - Redirect to '/management/<username>' if authentication are valid.
     - Redirect to auth page if authentication are invalid.
     """
-    
+
     msg = ''
-    
+
     with get_connection() as connection:
         try:
             connection.ping(reconnect=True)
@@ -35,7 +35,7 @@ def login_user():
                     except:
                         flash("CRSF token is invalid or missing, please try again.", "error")
                         return redirect(url_for('authen.auth'))
-                    
+
                     name = request.form['name']
                     passcode = request.form['passcode']
                     cursor.execute("SELECT * FROM users WHERE name = %s AND passcode = %s", (name, passcode))
@@ -43,9 +43,9 @@ def login_user():
 
                     if record and name == record[1]:
                         session['loggedin'] = True
-                        session['name'] = record[1]        
+                        session['name'] = record[1]
                         username = record[1]
-                        return redirect(url_for('management_bp.management', username = username))
+                        return redirect(url_for('management_bp.management', username=username))
                     else:
                         session.pop('loggedin', None)
                         session.pop('name', None)
@@ -57,6 +57,7 @@ def login_user():
 
     return render_template('auth/index.html', msg=msg)
 
+
 def logout_user():
     """
     This function handles the logout process for the user by popping (removing) 'loggin' and 'name' in the Flask session.
@@ -66,7 +67,7 @@ def logout_user():
     Return:
     - Redirect to authentication page after logout.
     """
-    
-    session.pop('loggedin', None) 
+
+    session.pop('loggedin', None)
     session.pop('name', None)
     return redirect(url_for('authen.auth'))

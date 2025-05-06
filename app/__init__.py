@@ -3,22 +3,26 @@ from flask import Flask, render_template, request
 import os
 
 from flask_limiter import Limiter
+
 limiter = Limiter(key_func=lambda: request.remote_addr)
 
 from flask_socketio import SocketIO
+
 socketio = SocketIO()
 
 from flask_wtf.csrf import CSRFProtect
+
 csrf = CSRFProtect()
+
 
 def create_app():
     app = Flask(__name__)
-    
+
     env = os.getenv("FLASK_ENV", "development")
 
     config_class = ProductionConfig if env == "production" else DevelopmentConfig
     app.config.from_object(config_class)
-    
+
     config_class.init_app(app)
     limiter.init_app(app)
     socketio.init_app(app)
@@ -35,9 +39,9 @@ def create_app():
 
     from app.home import routes as home_routes
     app.register_blueprint(home_routes.home_bp)
-    
+
     @app.route('/')
     def main():
         return render_template('main/index.html')
-    
+
     return app

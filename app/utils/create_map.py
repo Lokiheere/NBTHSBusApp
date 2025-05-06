@@ -2,13 +2,18 @@ import folium
 from app.utils.db_connect import get_connection
 
 SPOT_LOCATION = {
-    "Spot A": [40.45270809342312, -74.4676765629711],
-    "Spot B": [40.4530533013997, -74.46776038200282],
-    "Spot C": [40.45347406930079, -74.46786208465576]
+    "Spot A": [40.45278217829758, -74.46772714669649],
+    "Spot B": [40.45279035227332, -74.46772714669649],
+    "Spot C": [40.45347406930079, -74.46786208465576],
+    "Spot E": [40.45279035227332, -74.46775167638062],
+    "Spot D": [40.452805934846104, -74.46773150528614],
+    "Spot F": [40.452805934846104 ,-74.46776],
 }
+
 
 def get_spot_location(selected_spot):
     return SPOT_LOCATION.get(selected_spot, None)
+
 
 def bus_setup():
     """
@@ -28,6 +33,7 @@ def bus_setup():
         item["location"] = get_spot_location(item["spot_name"])
 
     return assigned_data
+
 
 def reset_map():
     """
@@ -55,6 +61,7 @@ def reset_map():
     )
 
     plan.save("app/templates/maps/map1.html")
+
 
 def render_map():
     """

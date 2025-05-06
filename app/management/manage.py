@@ -7,7 +7,8 @@ from flask_wtf.csrf import validate_csrf
 from app.utils.db_connect import get_connection
 from app.utils.create_map import render_map
 
-def process_selection(selected_bus, selected_spot): 
+
+def process_selection(selected_bus, selected_spot):
     """sumary_line
     
     Keyword arguments:
@@ -33,7 +34,8 @@ def process_selection(selected_bus, selected_spot):
                 spot_result = cursor.fetchone()
 
                 if bus_result and spot_result:
-                    cursor.execute("INSERT INTO assigned_buses (bus_name, spot_name) VALUES (%s, %s)",(selected_bus, selected_spot))
+                    cursor.execute("INSERT INTO assigned_buses (bus_name, spot_name) VALUES (%s, %s)",
+                                   (selected_bus, selected_spot))
                     cursor.execute("DELETE FROM buses WHERE bus_name = %s", (selected_bus,))
                     cursor.execute("DELETE FROM parking_spots WHERE spot_name = %s", (selected_spot,))
                     msg = f"Bus '{selected_bus}' and parking spot '{selected_spot}' were successfully added to the map."
@@ -53,6 +55,7 @@ def process_selection(selected_bus, selected_spot):
             msg = f"Error: {str(Exception)}"
 
     return msg
+
 
 def get_available_data():
     """
@@ -87,6 +90,11 @@ def get_available_data():
 
     return available_options, parking_spots
 
+
+def undo_selection(selected_bus_undo, selected_spot_undo):
+    print(f"Receive Bus: {selected_bus_undo} Spot: {selected_spot_undo}")
+
+
 def reset_options():
     """
     Resets the bus and parking spot MySQL database data to default at midnight.
@@ -97,7 +105,7 @@ def reset_options():
     none -- N/A
     None: N/A
     """
-    
+
     with get_connection() as connection:
         try:
             connection.ping(reconnect=True)
@@ -107,16 +115,22 @@ def reset_options():
 
         with connection.cursor() as cursor:
             cursor.execute("DELETE FROM buses")
-            default_bus_options = ['Bus 1', 'Bus 2', 'Bus 3', 'Bus 4']
+            default_bus_options = ['Bus 1', 'Bus 2', 'Bus 3', 'Bus 4', 'Bus 5', 'Bus 6', 'Bus 7', 'Bus 8', 'Bus 9',
+                                   'Bus 10', 'Bus 11', 'Bus 12', 'Bus 13', 'Bus 14', 'Bus 15', 'Bus 16', 'Bus 17',
+                                   'Bus 18', 'Bus 19', 'Bus 20', 'Bus 21', 'Bus 22', 'Bus 23', 'Bus 24', 'Bus 25',
+                                   'Bus 26', 'Bus 27', 'Bus 28', 'Bus 29', 'Bus 30', 'Bus 31', 'Bus 32']
             for bus in default_bus_options:
                 cursor.execute("INSERT INTO buses (bus_name) VALUES (%s)", (bus,))
-                
+
             cursor.execute("DELETE FROM parking_spots")
-            default_parking_spots = ['Spot A', 'Spot B', 'Spot C', 'Spot D']
+            default_parking_spots = ['Spot A', 'Spot B', 'Spot C', 'Spot D', 'Spot E', 'Spot F', 'Spot G', 'Spot H',
+                                     'Spot I', 'Spot J', 'Spot K', 'Spot L', 'Spot M', 'Spot N', 'Spot O', 'Spot P',
+                                     'Spot Q', 'Spot R', 'Spot S', 'Spot T', 'Spot U', 'Spot V', 'Spot W', 'Spot X',
+                                     'Spot Y', 'Spot Z']
             for spot in default_parking_spots:
                 cursor.execute("INSERT INTO parking_spots (spot_name) VALUES (%s)", (spot,))
 
             connection.commit()
 
-    #Tawsif here just checking to see if the code works
+    # Tawsif here just checking to see if the code works
     print(f"Options reset at {datetime.now()}. Default buses and parking spots restored.")

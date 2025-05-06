@@ -31,7 +31,7 @@
                     Bus: {{ bus.bus_name }}
                     Spot: {{ bus.spot_name }}
 
-                    <form method="POST" action="{{ url_for('management_bp.undo_selection', username=username) }}">
+                    <form method="POST" action="{{ url_for('management_bp.management', username=username) }}">
                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="bus_name" value="{{ bus.bus_name }}">
                         <input type="hidden" name="spot_name" value="{{ bus.spot_name }}">
@@ -39,7 +39,11 @@
                     </form>
                 </p>
             </div>
+
         {% endfor %}
     {% endif %}
+    <script>
+
+    </script>
 {% endblock %}
 
