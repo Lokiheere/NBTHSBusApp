@@ -18,8 +18,6 @@ def login_user():
     - Redirect to auth page if authentication are invalid.
     """
 
-    msg = ''
-
     with get_connection() as connection:
         try:
             connection.ping(reconnect=True)
@@ -54,6 +52,7 @@ def login_user():
             finally:
                 cursor.close()
                 connection.close()
+                return None
 
     return render_template('auth/index.html', msg=msg)
 

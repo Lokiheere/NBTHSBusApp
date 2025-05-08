@@ -5,25 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d840dce-7380-434a-931d-b20ffc87c0e3" name="Changes" comment="Will see if the database is awake or not.">
-      <change afterPath="$PROJECT_DIR$/app/templates/form/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/NBTHSBusApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/NBTHSBusApp.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/javascript/home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/auth/admin_data_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/admin_data_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/errors/error_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/errors/error_handlers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/home/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/home/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/management/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/management/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/management/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/management/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/img/bus-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/img/file.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/_macros.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_macros.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/management/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/management/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/maps/map1.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/maps/map1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/main/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/maps/map1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/maps/map2.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/utils/create_map.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/create_map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/utils/db_connect.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/db_connect.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,11 +74,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\NBTHSBusApp\NBTHSBusApp\app\static\maps" />
       <recent name="D:\NBTHSBusApp\NBTHSBusApp\app\templates\management\other" />
       <recent name="D:\NBTHSBusApp\NBTHSBusApp" />
       <recent name="D:\NBTHSBusApp\NBTHSBusApp\docker" />
       <recent name="D:\NBTHSBusApp\NBTHSBusApp\Docker" />
-      <recent name="D:\NBTHSBusApp\NBTHSBusApp\config" />
     </key>
   </component>
   <component name="RunManager" selected="Flask server.Flask">
@@ -139,9 +130,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.NBTHSBusApp" />
-      <item itemvalue="Flask server.Flask" />
       <item itemvalue="Docker.Dockerfile" />
+      <item itemvalue="Flask server.Flask" />
+      <item itemvalue="Python.NBTHSBusApp" />
     </list>
   </component>
   <component name="SharedIndexes">
@@ -168,6 +159,11 @@
       <workItem from="1746507840524" duration="7000" />
       <workItem from="1746557536235" duration="1386000" />
       <workItem from="1746565912936" duration="1188000" />
+      <workItem from="1746567281323" duration="151000" />
+      <workItem from="1746586132569" duration="4298000" />
+      <workItem from="1746590596121" duration="111000" />
+      <workItem from="1746672340445" duration="1322000" />
+      <workItem from="1746742255808" duration="2597000" />
     </task>
     <task id="LOCAL-00001" summary="Will see if the database is awake or not.">
       <option name="closed" value="true" />
