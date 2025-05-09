@@ -5,15 +5,6 @@
     <div>
         <input type="text" id="input">
     </div>
-
-    {% for bus in assigned_data %}
-        <div>
-            <h3>{{ bus.bus_name }} - {{ bus.spot_name }}</h3>
-            <iframe src="{{ url_for('static', filename='maps/map_' + bus.bus_name + '_' +bus.spot_name + '.html') }}" width="600" height="400"></iframe>
-            <a href="{{ url_for('static', filename='maps/map_' + bus.bus_name + '_' + bus.spot_name + '.html') }}" target="_blank">View Full Map</a>
-        </div>
-    {% endfor %}
-    <script>
-
-    </script>
+    <div id="assignments-container"></div>
+    <script src="{{url_for('static', filename='javascript/home.js')}}"></script>
 {% endblock %}

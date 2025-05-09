@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = true;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_bf330408bd9db170e0b633997ce5aa23 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_bf330408bd9db170e0b633997ce5aa23" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_bf330408bd9db170e0b633997ce5aa23 = L.map(
+                "map_bf330408bd9db170e0b633997ce5aa23",
+                {
+                    center: [40.453329, -74.467905],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 19,
+  "zoomControl": false,
+  "preferCanvas": false,
+  "dragging": false,
+  "scrollWheelZoom": false,
+  "doubleClickZoom": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_11dd288c9da64ee720a992a352c0423c = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_11dd288c9da64ee720a992a352c0423c.addTo(map_bf330408bd9db170e0b633997ce5aa23);
+        
+    
+            var marker_80657dfacf52c1bd06afd357d442a6ae = L.marker(
+                [40.45278217829758, -74.46772714669649],
+                {
+}
+            ).addTo(map_bf330408bd9db170e0b633997ce5aa23);
+        
+    
+            var icon_ba7426bbdb85a481eb8e285a3b479036 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "bus",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2c230c11d1e63d36351e3ed7b72fec7d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ba5db68ce11c476348c1bcfe630cb9ef = $(`<div id="html_ba5db68ce11c476348c1bcfe630cb9ef" style="width: 100.0%; height: 100.0%;">Bus: Bus 1 - Spot: Spot A</div>`)[0];
+                popup_2c230c11d1e63d36351e3ed7b72fec7d.setContent(html_ba5db68ce11c476348c1bcfe630cb9ef);
+            
+        
+
+        marker_80657dfacf52c1bd06afd357d442a6ae.bindPopup(popup_2c230c11d1e63d36351e3ed7b72fec7d)
+        ;
+
+        
+    
+    
+                marker_80657dfacf52c1bd06afd357d442a6ae.setIcon(icon_ba7426bbdb85a481eb8e285a3b479036);
+            
+</script>
+</html>

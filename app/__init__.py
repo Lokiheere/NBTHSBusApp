@@ -14,6 +14,10 @@ from flask_wtf.csrf import CSRFProtect
 
 csrf = CSRFProtect()
 
+from flask_marshmallow import Marshmallow
+
+marshmallow = Marshmallow()
+
 
 def create_app():
     app = Flask(__name__)
@@ -27,6 +31,7 @@ def create_app():
     limiter.init_app(app)
     socketio.init_app(app)
     csrf.init_app(app)
+    marshmallow.init_app(app)
 
     from app.errors import error_handlers
     app.register_blueprint(error_handlers.errors)

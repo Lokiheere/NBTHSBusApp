@@ -6,3 +6,4 @@ flask_limiter==3.12.0
 apscheduler==3.11.0
 flask_socketio==5.5.1
 Flask-WTF==1.2.2
+flask-marshmallow==1.3.0

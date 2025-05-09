@@ -34,6 +34,10 @@ app = create_app()
 from app.management.manage import reset_options
 from app.utils.create_map import reset_map
 
+@socketio.on('connect')
+def handle_connect():
+    print("Client connected!")
+
 from app.utils.db_initializer import initialize_database
 
 initialize_database()
