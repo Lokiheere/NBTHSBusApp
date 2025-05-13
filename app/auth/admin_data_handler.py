@@ -4,7 +4,7 @@ from flask_wtf.csrf import validate_csrf
 from app.utils.db_connect import get_connection
 
 
-def login_user():
+def login_user() -> str:
     """
     Gets the login authentication from mySQL database and checks if they are valid.
     If valid, it redirects to the management page.

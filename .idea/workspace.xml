@@ -5,14 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d840dce-7380-434a-931d-b20ffc87c0e3" name="Changes" comment="Will see if the database is awake or not.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/img/bus_icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/auth/admin_data_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/admin_data_handler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/home/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/home/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/management/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/management/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/management/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/management/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/management/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/management/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/static/javascript/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/javascript/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/javascript/manage.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/javascript/manage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/maps/map_Bus 1_Spot A.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/maps/map_Bus 1_Spot A.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/_macros.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_macros.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/auth/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/auth/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/errors/403.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/errors/403.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/errors/500.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/errors/500.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/form/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/form/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/management/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/management/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/management/other/undo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/create_map.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/create_map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/db_initializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/db_initializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements/common.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements/common.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +39,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -67,17 +83,17 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;watcher.settings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\NBTHSBusApp\NBTHSBusApp\app\static\img" />
       <recent name="D:\NBTHSBusApp\NBTHSBusApp\app\static\maps" />
       <recent name="D:\NBTHSBusApp\NBTHSBusApp\app\templates\management\other" />
       <recent name="D:\NBTHSBusApp\NBTHSBusApp" />
       <recent name="D:\NBTHSBusApp\NBTHSBusApp\docker" />
-      <recent name="D:\NBTHSBusApp\NBTHSBusApp\Docker" />
     </key>
   </component>
   <component name="RunManager" selected="Flask server.Flask">
@@ -163,7 +179,25 @@
       <workItem from="1746590596121" duration="111000" />
       <workItem from="1746672340445" duration="1322000" />
       <workItem from="1746742255808" duration="3210000" />
-      <workItem from="1746749541983" duration="6065000" />
+      <workItem from="1746749541983" duration="8060000" />
+      <workItem from="1746757941053" duration="2291000" />
+      <workItem from="1746816883653" duration="659000" />
+      <workItem from="1746820900724" duration="80000" />
+      <workItem from="1746836940925" duration="2922000" />
+      <workItem from="1746848937734" duration="3192000" />
+      <workItem from="1746886528083" duration="3436000" />
+      <workItem from="1746895898300" duration="47000" />
+      <workItem from="1746912327514" duration="491000" />
+      <workItem from="1746914853175" duration="8000" />
+      <workItem from="1746972580909" duration="3732000" />
+      <workItem from="1746978703355" duration="43000" />
+      <workItem from="1747007112674" duration="4000" />
+      <workItem from="1747007455477" duration="9000" />
+      <workItem from="1747009955716" duration="310000" />
+      <workItem from="1747078434642" duration="1209000" />
+      <workItem from="1747085556049" duration="2000" />
+      <workItem from="1747086854595" duration="3691000" />
+      <workItem from="1747105020073" duration="7514000" />
     </task>
     <task id="LOCAL-00001" summary="Will see if the database is awake or not.">
       <option name="closed" value="true" />

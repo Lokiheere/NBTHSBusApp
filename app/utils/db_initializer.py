@@ -1,6 +1,6 @@
 from app.utils.db_connect import get_connection
 
-def initialize_database():
+def initialize_database() -> None:
     """
     Initializes the database by creating necessary tables.
 

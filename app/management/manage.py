@@ -8,13 +8,7 @@ from app.utils.db_connect import get_connection
 from app.utils.create_map import render_map
 
 
-def process_selection(selected_bus, selected_spot):
-    """sumary_line
-    
-    Keyword arguments:
-    argument -- description
-    Return: return_description
-    """
+def process_selection(selected_bus, selected_spot) -> str:
     with get_connection() as connection:
         try:
             validate_csrf(request.form['csrf_token'])
@@ -61,12 +55,12 @@ def get_available_data():
     """
     Fetches available bus names and parking spot names from the database.
 
-    This function connects to the MySQL database, retrieves all bus names from the 'buses' table 
+    This function connects to the MySQL database, retrieves all bus names from the 'buses' table
     and all parking spot names from the 'parking_spots' table, then returns them as lists.
 
     Keyword arguments:
     None -- N/A
-    
+
     Returns:
         - available_options (list): List of bus names.
         - parking_spots (list): List of parking spot names.
@@ -92,15 +86,28 @@ def get_available_data():
 
 
 def undo_selection(selected_bus_undo, selected_spot_undo):
-    print(f"Receive Bus: {selected_bus_undo} Spot: {selected_spot_undo}")
+    with get_connection() as connection:
+        try:
+            connection.ping(reconnect=True)
+        except mysql.connector.Error as e:
+            print(f"MySQL Error: {str(e)}")
+            connection.rollback()
+
+        with connection.cursor() as cursor:
+            connection.autocommit = False
+            cursor.execute("DELETE FROM assigned_buses WHERE bus_name = %s AND spot_name = %s ", (selected_bus_undo, selected_spot_undo))
+            cursor.execute("INSERT INTO buses (bus_name) VALUES (%s)", (selected_bus_undo,))
+            cursor.execute("INSERT INTO parking_spots  (spot_name) VALUES (%s)", (selected_spot_undo,))
+
+            connection.commit()
 
 
-def reset_options():
+def reset_options() -> None:
     """
     Resets the bus and parking spot MySQL database data to default at midnight.
     This function is called by the scheduler in app.py.
     This is to ensure that the options are always available for the next day.
-    
+
     Keyword arguments:
     none -- N/A
     None: N/A

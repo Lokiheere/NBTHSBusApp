@@ -6,10 +6,6 @@ from flask_limiter import Limiter
 
 limiter = Limiter(key_func=lambda: request.remote_addr)
 
-from flask_socketio import SocketIO
-
-socketio = SocketIO()
-
 from flask_wtf.csrf import CSRFProtect
 
 csrf = CSRFProtect()
@@ -29,7 +25,6 @@ def create_app():
 
     config_class.init_app(app)
     limiter.init_app(app)
-    socketio.init_app(app)
     csrf.init_app(app)
     marshmallow.init_app(app)
 

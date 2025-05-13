@@ -2,13 +2,15 @@
 
 {% block content %}
     {{ macros.navbar() }}
-    <form method="POST" action="{{url_for('authen.auth')}}">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">        
-        <label>Name:</label>
-        <input type="text" name="name" id="name" required>
-        <label>Passcode:</label>
-        <input type="password" name="passcode" id="passcode" pattern="\d{8}" required>
-        <input type="submit" value="Login">
-    </form>  
-    <p>{{ msg }}</p>
+    <div class="mt-4">
+        <form method="POST" action="{{url_for('authen.auth')}}">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <label>Name:</label>
+            <input type="text" name="name" id="name" required>
+            <label>Passcode:</label>
+            <input type="password" name="passcode" id="passcode" pattern="\d{8}" required>
+            <input type="submit" value="Login">
+        </form>
+        <p>{{ msg }}</p>
+    </div>
 {% endblock %}

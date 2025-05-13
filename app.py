@@ -16,6 +16,7 @@
 #############################################################################
 
 import os
+from waitress import serve
 
 from dotenv import load_dotenv
 
@@ -27,16 +28,12 @@ from apscheduler.schedulers.background import BackgroundScheduler
 
 scheduler = BackgroundScheduler()
 
-from app import create_app, socketio
+from app import create_app
 
 app = create_app()
 
 from app.management.manage import reset_options
 from app.utils.create_map import reset_map
-
-@socketio.on('connect')
-def handle_connect():
-    print("Client connected!")
 
 from app.utils.db_initializer import initialize_database
 
@@ -45,9 +42,8 @@ initialize_database()
 if __name__ == '__main__':
     scheduler.add_job(reset_options, 'interval', seconds=30)
     scheduler.add_job(reset_map, 'interval', seconds=80)
-
     scheduler.start()
-
-    socketio.run(app, host="0.0.0.0", port=8080)
+    print("http://localhost:8080")
+    serve(app, host="0.0.0.0", port=8080, threads=2)
 
 # 'cron', hour=0

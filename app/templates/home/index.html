@@ -2,9 +2,6 @@
 
 {% block content %}
     {{ macros.navbar() }}
-    <div>
-        <input type="text" id="input">
-    </div>
-    <div id="assignments-container"></div>
+    <div class="mt-4" id="assignments-container"></div>
     <script src="{{url_for('static', filename='javascript/home.js')}}"></script>
 {% endblock %}

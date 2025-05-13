@@ -37,7 +37,7 @@ def bus_setup():
     return assigned_data
 
 
-def reset_map():
+def reset_map() -> None:
     """
     sumary_line
 
@@ -60,6 +60,7 @@ def reset_map():
             else:
                 print("Failed to remove {} as it didn't exist".format(file_path))
 
+
 def render_map():
     """
     sumary_line
@@ -76,7 +77,7 @@ def render_map():
     for bus in assigned_data:
         if bus["location"]:
             plan = folium.Map(
-                location=[40.453329, -74.467905],
+                location=bus["location"],
                 zoom_start=19,
                 zoom_control=False,
                 dragging=False,
@@ -88,7 +89,7 @@ def render_map():
             folium.Marker(
                 location=bus["location"],
                 popup=folium.Popup(f"Bus: {bus['bus_name']} - Spot: {bus['spot_name']}", max_width=250),
-                icon=folium.Icon(color="blue", icon="bus")
+                icon=folium.CustomIcon(icon_image="app/static/img/bus_icon.png", icon_size=(20, 20)),
             ).add_to(plan)
 
             map_filename = f"app/static/maps/map_{bus['bus_name']}_{bus['spot_name']}.html"

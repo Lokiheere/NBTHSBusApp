@@ -1,10 +1,10 @@
 from functools import wraps
-from flask import redirect, render_template, session, url_for, request
+from flask import redirect, render_template, session, url_for, request, jsonify
 
 from . import manage
 from . import management_bp
 
-from app.utils.create_map import bus_setup
+from app.utils import create_map
 
 
 def login_required(f):
@@ -17,6 +17,22 @@ def login_required(f):
         return f(*args, **kwargs)
 
     return access_control
+
+
+@management_bp.route('/management/api/undo_assignments', methods=['POST'])
+def undo_assignments():
+    data = request.get_json()
+    bus_name = data.get('bus_name')
+    spot_name = data.get('spot_name')
+
+    return manage.undo_selection(bus_name, spot_name)
+
+
+@management_bp.route('/management/api/assignments')
+def get_assignments():
+    assigned_data = create_map.bus_setup()
+
+    return jsonify(assigned_data)
 
 
 @management_bp.route('/management/<username>', methods=['GET', 'POST'])
@@ -41,17 +57,9 @@ def management(username):
             session['msg'] = msg
             return redirect(url_for('management_bp.management', username=username))
 
-    selected_bus_undo = request.form.get("bus_name")
-    selected_spot_undo = request.form.get("spot_name")
-
-    if not selected_bus_undo or not selected_spot_undo:
-        manage.undo_selection(selected_bus_undo, selected_spot_undo)
-
     msg = session.pop('msg', '')
 
     print(f"Current options passed to template: {available_options}, Parking spots: {parking_spots}")
 
-    assigned_data = bus_setup()
-
     return render_template('management/index.html', username=username, options=available_options, spots=parking_spots,
-                           msg=msg, assigned_data=assigned_data)
+                           msg=msg)

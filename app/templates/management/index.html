@@ -2,48 +2,32 @@
 
 {% block content %}
     {{ macros.navbar() }}
-    <h2>Welcome, {{username}}</h2>
-    <a class="text-blue-500 underline" href="{{url_for('authen.logout')}}">Logout</a>
-    {% if session['loggedin'] %}
-        <p>{{ msg }}</p>
+    <div class="mt-4">
+        <h2>Welcome, {{username}}</h2>
+        <a class="text-blue-500 underline" href="{{url_for('authen.logout')}}">Logout</a>
+        {% if session['loggedin'] %}
+                <p>{{ msg }}</p>
 
-        <form method="POST" action="{{ url_for('management_bp.management', username=username) }}">
-            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-            <label for="bus_selector">Choose a Bus:</label>
-            <select name="bus_selector" id="bus_selector" required>
-                {% for option in options %}
-                <option value="{{ option }}">{{ option }}</option>
-                {% endfor %}
-            </select>
-        
-            <label for="spot_selector">Choose a Parking Spot:</label>
-            <select name="spot_selector" id="spot_selector" required>
-                {% for spot in spots %}
-                <option value="{{ spot }}">{{ spot }}</option>
-                {% endfor %}
-            </select>
-            <button type="submit">Submit</button>
-        </form>
+                <form method="POST" action="{{ url_for('management_bp.management', username=username) }}">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <label for="bus_selector">Choose a Bus:</label>
+                    <select name="bus_selector" id="bus_selector" required>
+                        {% for option in options %}
+                        <option value="{{ option }}">{{ option }}</option>
+                        {% endfor %}
+                    </select>
 
-        {% for bus in assigned_data %}
-            <div>
-                <p>
-                    Bus: {{ bus.bus_name }}
-                    Spot: {{ bus.spot_name }}
-
-                    <form method="POST" action="{{ url_for('management_bp.management', username=username) }}">
-                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="bus_name" value="{{ bus.bus_name }}">
-                        <input type="hidden" name="spot_name" value="{{ bus.spot_name }}">
-                        <button type="submit">Undo Assignment</button>
-                    </form>
-                </p>
-            </div>
-
-        {% endfor %}
-    {% endif %}
-    <script>
-
-    </script>
+                    <label for="spot_selector">Choose a Parking Spot:</label>
+                    <select name="spot_selector" id="spot_selector" required>
+                        {% for spot in spots %}
+                        <option value="{{ spot }}">{{ spot }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Submit</button>
+                </form>
+                <div id="undo-assignments-container"></div>
+            <script src="{{url_for('static', filename='javascript/manage.js')}}"></script>
+        {% endif %}
+    </div>
 {% endblock %}
 
